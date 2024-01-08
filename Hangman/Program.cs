@@ -46,11 +46,11 @@ namespace Hangman
             // Generate random number to get a random word from array
             Random rand = new Random();
             int num = rand.Next(0, array.Length-1);
-            // Get random word as hangman word
-            string hangmanWord = array[num].ToLower();
-            // Generate hangman clue as underscores of same length as hangman word (-1 as to remove new line)
+            // Get random word as hangman word, make it lower case and replace line endings with ""
+            string hangmanWord = array[num].ToLower().ReplaceLineEndings("");
+            // Generate hangman clue as underscores of same length as hangman word
             string hangmanClue = "";
-            for(int i=0; i<hangmanWord.Length -1; i++)
+            for(int i=0; i<hangmanWord.Length; i++)
             {
                 hangmanClue += "_";
             }
@@ -101,8 +101,8 @@ namespace Hangman
                             index++;
                             list.Add(new positionOfCharacter() { nameOfWord = hangmanWord, c = letter, pos = index });
                         }
-                        // Check whether hangman Clue is finished of _ spaces (this means the full word is guessed)
-                        if(hangmanClue.IndexOf("_") == -1)
+                        // Check whether hangman Clue == hangmanWord
+                        if(hangmanClue == hangmanWord)
                         {
                             correct = true;
                         }
@@ -119,12 +119,10 @@ namespace Hangman
             // End message
             if (correct)
             {
-                Console.WriteLine($"Well done the word was {hangmanWord}");
-                Console.WriteLine($"You got it with {wrong} wrong :)");
+                Console.WriteLine($"Well done the word was {hangmanWord}, you got it with {wrong} wrong :)");
             } else
             {
-                Console.WriteLine($"Unlucky the word was {hangmanWord}");
-                Console.WriteLine("better luck next time :(");
+                Console.WriteLine($"Unlucky the word was {hangmanWord} better luck next time :(");
             }
             Console.ReadLine();
 

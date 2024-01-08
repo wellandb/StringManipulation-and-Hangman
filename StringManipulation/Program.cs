@@ -45,17 +45,17 @@ namespace StringManipulation
                 foreach (var word in array) 
                 {
                     string letter = letterToSearch.ToLower();
-                    string wordToSearch = word.ToLower();
+                    string wordToSearch = word.ToLower().ReplaceLineEndings("");
                     int index = 0;
                     if(wordToSearch.Contains(letter))
                     {
                         // Find index where letter is
                         if(wordToSearch.IndexOf(letter) != -1)
                         {
-                            Console.WriteLine($"{count}: {wordToSearch}");
+                            //Console.WriteLine($"{count}: {wordToSearch}");
                             while ((index = wordToSearch.IndexOf(letter, index)) !=-1)
                             {
-                                Console.WriteLine(letter + " found at position " + " " + index);
+                                Console.WriteLine("word: "+ wordToSearch + " " + letter + " found at position " + " " + index);
                                 index++;
                                 list.Add( new positionOfCharacter(){nameOfWord = wordToSearch, c = letter, pos = index});
                             }
@@ -66,7 +66,7 @@ namespace StringManipulation
                 }
                 foreach(var li in list)
                 {
-                // Console.WriteLine($"word: {li.nameOfWord} letter: {li.c} position: { li.pos} ");
+                    Console.WriteLine($"word: {li.nameOfWord} letter: {li.c} position: { li.pos} ");
                 }
                 Console.ReadLine();
    
