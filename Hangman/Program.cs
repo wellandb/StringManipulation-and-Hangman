@@ -21,8 +21,7 @@ namespace Hangman
             try
             {
                 // Get file name.
-                // Needed To use ../../../ as it kept opening in the bin/Debug/net7.0 folder instead of a relative folder
-                string path = @"../../../Files/Words.txt";
+                string path = @"Files/Words.txt";
                 // Get path name.
                 string filename = Path.GetFileName(path);
                 // Open the text file using a stream reader. Read into a string

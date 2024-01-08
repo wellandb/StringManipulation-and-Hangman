@@ -20,7 +20,7 @@ namespace StringManipulation
                 try
                 {
                     // Get file name.
-                    string path = @"../../../Files/Words.txt";
+                    string path = @"Files/Words.txt";
                     // Get path name.
                     string filename = Path.GetFileName(path);
                     // Open the text file using a stream reader. Read into a string
@@ -52,7 +52,7 @@ namespace StringManipulation
                         // Find index where letter is
                         if(wordToSearch.IndexOf(letter) != -1)
                         {
-                            //Console.WriteLine($"{count}: {wordToSearch}");
+                            // Console.WriteLine($"{count}: {wordToSearch}");
                             while ((index = wordToSearch.IndexOf(letter, index)) !=-1)
                             {
                                 Console.WriteLine("word: "+ wordToSearch + " " + letter + " found at position " + " " + index);
