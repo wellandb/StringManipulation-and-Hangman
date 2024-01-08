@@ -21,11 +21,12 @@ namespace Hangman
             try
             {
                 // Get file name.
-                string path = @"Files/Words.txt";
+                // Needed To use ../../../ as it kept opening in the bin/Debug/net7.0 folder instead of a relative folder
+                string path = @"../../../Files/Words.txt";
                 // Get path name.
                 string filename = Path.GetFileName(path);
                 // Open the text file using a stream reader. Read into a string
-                using (var sr = new StreamReader("C:\\Users\\benwe\\source\\Test\\StringManipulation\\StringManipulation\\Files\\Words.txt"))
+                using (var sr = new StreamReader(path))
                 {
                     // Read the stream as a string, and write the string to the console.
                     contents = sr.ReadToEnd();
@@ -37,6 +38,7 @@ namespace Hangman
             {
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
+                
             }
             Console.WriteLine("---------");
             //Store each word into an array using split on '\n'
